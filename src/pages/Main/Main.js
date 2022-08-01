@@ -1,4 +1,4 @@
-import './Main.css'
+import './Main.scss'
 
 // const commentButton = document.querySelectorAll('.commentButton')
 // const commentContainer = document.querySelectorAll('.commentContainer')
