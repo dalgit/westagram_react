@@ -1,4 +1,6 @@
-import './Login.css'
+import './Login.scss'
+import { useNavigate } from 'react-router-dom'
+
 
 // const id = document.getElementById('id')
 // const password = document.getElementById('password')
@@ -32,7 +34,11 @@ import './Login.css'
 // }
 
 
+
+
 function Login() {
+    const navigate = useNavigate();
+
     return (
             <div className="loginContainer">
                 <h1 className="loginTitle">
@@ -42,7 +48,7 @@ function Login() {
                     <input type="text" placeholder="전화번호, 사용자 이름 또는 이메일" id="id" />
                     <input type="password" placeholder="비밀번호" id="password" />
                 </div>
-                <button id="loginButton">
+                <button id="loginButton" onClick={()=>{navigate('/main')}}>
                             로그인
                 </button>
                 <div id="error">
