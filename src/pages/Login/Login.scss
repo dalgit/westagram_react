@@ -39,7 +39,15 @@ body{
         }
     }
 
-    #loginButton{
+
+
+
+
+
+
+
+
+    .loginButton {
         width:300px;
         background-color: #C4E1FB;
         border:none;
@@ -48,9 +56,20 @@ body{
         color:#ffffff;
     }
 
-    .loginButtonHover{
+    .loginButtonActive{
+        width:300px;
+        background-color: #0095F6;
+        border:none;
+        height:40px;
+        border-radius: 5px;
+        color:#ffffff;
         cursor: pointer;
     }
+
+
+
+
+
 
 
     #error{
@@ -68,15 +87,3 @@ body{
         color:#577296;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-@import '../../styles/mixin.scss';
