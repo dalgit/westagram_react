@@ -1,4 +1,5 @@
 import './Main.scss'
+import Comment from '../../components/Comment';
 
 // const commentButton = document.querySelectorAll('.commentButton')
 // const commentContainer = document.querySelectorAll('.commentContainer')
@@ -82,7 +83,6 @@ import './Main.scss'
 //     commentMore[idx].innerText=`댓글 ${commentCount}개`
 // }
 
-
 function Main() {
     return (
         <>
@@ -133,10 +133,9 @@ function Main() {
                                 <div className="commentMore">
                                     댓글
                                 </div>
+
                                 <div className="commentBox">
-                                    <div className="comment">
-                                        <span className="userName">ddoo3</span>와~ 너무 예쁘다!!
-                                    </div>
+                                    <Comment id={'ddood'} contents={'와~ 너무 예쁘다!!'} />
                                     <div className="commentImgBox">
                                         <img src="./images/heart.png" className="commentHeart" alt="tmp" />
                                     </div>
