@@ -1,10 +1,29 @@
 import './Main.scss'
 import Comment from '../../components/Comment';
+import { useState } from 'react'
 
-// const commentButton = document.querySelectorAll('.commentButton')
-// const commentContainer = document.querySelectorAll('.commentContainer')
-// const commentInput = document.querySelectorAll('.commentInput')
-//---------------------------------댓글 구현---------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // commentButton.forEach((btn, idx) => btn.addEventListener('click', () => commentAdd(idx)))
 
@@ -84,6 +103,25 @@ import Comment from '../../components/Comment';
 // }
 
 function Main() {
+    const [comment,setComment] = useState('')
+    const [comments,setComments] = useState([])
+
+    function commentPlus(e){
+        setComment(e.target.value)
+    }
+
+    function isEnter(e){
+        if(e.key==='Enter') {
+            console.log(typeof e.target.value);
+            e.target.value=''
+            let tmp= [...comments]
+            tmp.push(comment)
+            setComments(tmp)
+        }
+    }
+
+
+
     return (
         <>
             <nav className="navbar">
@@ -140,20 +178,19 @@ function Main() {
                                         <img src="./images/heart.png" className="commentHeart" alt="tmp" />
                                     </div>
                                 </div>
-                                <div className="commentBox">
-                                    <div className="comment">
-                                        <span className="userName">holyholy</span>어디야?
-                                    </div>
-                                    <div className="commentImgBox">
-                                        <img src="./images/heart.png" className="commentHeart" alt="tmp" />
-                                    </div>
-                                </div>
+                                
+                                    {comments.map((c)=>{
+                                        return(
+                                            <Comment contents={c} key={c} />
+                                        )
+                                    })}
+                                
                             </div>
                             <div className="commentTime">
                                 42분 전
                             </div>
                             <div className="commentInputBox">
-                                <input type="text" placeholder="댓글 달기..." className="commentInput" />
+                                <input onChange={(e)=>{commentPlus(e)}} onKeyDown={(e)=>{isEnter(e)}} type="text" placeholder="댓글 달기..." className="commentInput" />
                                 <button className="commentButton">게시</button>
                             </div>
                         </div>
