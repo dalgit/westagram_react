@@ -1,5 +1,6 @@
 import './Main.scss'
 import Comment from '../../components/Comment/Comment';
+import Nav from '../../components/Nav/Nav';
 import { useState } from 'react'
 
 
@@ -104,18 +105,7 @@ function Main() {
 
     return (
         <>
-            <nav className="navbar">
-                <div className="leftLogo">
-                    <img src="images/instagram.png" alt='tmp' className='leftLogoImg'/>| westagram
-                </div>
-                <input className="navInput" type="text" placeholder="검색" />
-                <div className="rigthMenu">
-                    <img src="images/explore.png" alt='tmp' />
-                    <img src="images/heart.png" alt='tmp' />
-                    <img src="images/profile.png" alt='tmp' />
-                </div>
-            </nav>
-
+            <Nav />
             <div className="mainContainer">
                 <div className="feedContainer">
                     <section className="feedBox">
