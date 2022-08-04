@@ -1,27 +1,6 @@
 import './Main.scss'
-import Comment from '../../components/Comment';
+import Comment from '../../components/Comment/Comment';
 import { useState } from 'react'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -102,9 +81,11 @@ import { useState } from 'react'
 //     commentMore[idx].innerText=`댓글 ${commentCount}개`
 // }
 
+let firstComment = ['와~ 너무 멋있어!!!!', '잘 보고 갑니다.', '뭉클해져요']
+
 function Main() {
     const [comment,setComment] = useState('')
-    const [comments,setComments] = useState([])
+    const [comments,setComments] = useState(firstComment)
 
     function commentPlus(e){
         setComment(e.target.value)
@@ -112,7 +93,6 @@ function Main() {
 
     function isEnter(e){
         if(e.key==='Enter') {
-            console.log(typeof e.target.value);
             e.target.value=''
             let tmp= [...comments]
             tmp.push(comment)
@@ -171,19 +151,7 @@ function Main() {
                                 <div className="commentMore">
                                     댓글
                                 </div>
-
-                                <div className="commentBox">
-                                    <Comment id={'ddood'} contents={'와~ 너무 예쁘다!!'} />
-                                    <div className="commentImgBox">
-                                        <img src="./images/heart.png" className="commentHeart" alt="tmp" />
-                                    </div>
-                                </div>
-                                
-                                    {comments.map((c)=>{
-                                        return(
-                                            <Comment contents={c} key={c} />
-                                        )
-                                    })}
+                                <Comment comments={comments}/>
                                 
                             </div>
                             <div className="commentTime">
