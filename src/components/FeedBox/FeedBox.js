@@ -26,11 +26,6 @@ const FeedBox = () => {
         console.log(e)
     }
 
-
-
-
-
-
     return (
         <section className="feedBox">
             <div className="feedTop">
@@ -69,13 +64,6 @@ const FeedBox = () => {
                     <Comment nickname={'ioi_oio'} comments={['잘 보고 갑니다.']}/>
                     <Comment nickname={'kkrm3'} comments={['뭉클해져요']}/>
                     <Comment nickname={'nyam_nyam2'} comments={comments}  />
-
-
-
-
-
-
-
                 </div>
                 <div className="commentTime">
                     42분 전

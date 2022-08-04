@@ -1,13 +1,15 @@
 import React from 'react'
 import './Comment.scss'
 
+
+
 const Comment = (props) => {
     return (
         props.comments.map((comment, idx) => {
             return (
                 <div className="commentBox" key={idx}>
                     <div className="comment">
-                        <span className="userName">fsd</span><span>{comment}</span>
+                        <span className="userName">{props.nickname || 'nyam_nyam2'}</span>{comment}
                     </div>
                     <div className="commentImgBox">
                         <img src="./images/heart.png" className="commentHeart" alt="tmp" />
