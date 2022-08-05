@@ -8,20 +8,6 @@ import RecommendBox from '../../components/RecommendBox/RecommendBox';
 
 
 
-// function commentButtonStyle(idx) {
-//     if (commentInput[idx].value.length > 0) {
-//         commentButton[idx].style.color = '#0095F6'
-//         commentButton[idx].style.fontWeight = 'bold'
-//     } else {
-//         commentButton[idx].style = '';
-//     }
-// }3
-
-
-//     closeImgTag.src = './img/close.png'
-//     heartImgTag.src = './img/heart.png'
-//     userNameSpan.innerText = meEngName.innerText
-
 
 
 

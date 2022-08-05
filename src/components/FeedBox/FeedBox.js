@@ -5,28 +5,46 @@ import './FeedBox.scss'
 
 const FeedBox = () => {
 
-    const exist=[
-        {AbC_0078:'와~ 너무 멋있어!!!!'},
-        {ioi_oio:'잘 보고 갑니다.'}
+    const myName = 'nyam_nyam2'
+    const exist = [
+        { AbC_0078: '와~ 너무 멋있어!!!!' },
+        { ioi_oio: '잘 보고 갑니다.' }
     ]
 
-    const [comment,setComment] = useState('')
-    const [comments,setComments] = useState([])
-    
-    const myName = 'nyam_nyam2'
+    const [comment, setComment] = useState('')
+    const [comments, setComments] = useState([])
 
-    function commentChange(e){
+    function btnStyle(){
+        return comment.length>0?'commentButtonAct':'commentButton'
+    }
+
+    function commentChange(e) {
         setComment(e.target.value)
     }
 
-    function commentPlus(e){
+    function commentPlus(e) {
         e.preventDefault()
-        if(comment==='') return;
-        let tmp= [...comments]
+        if (comment === '') return;
+        let tmp = [...comments]
         tmp.push(comment)
         setComments(tmp)
         setComment('')
     }
+
+
+// function commentButtonStyle(idx) {
+//     if (commentInput[idx].value.length > 0) {
+//         commentButton[idx].style.color = '#0095F6'
+//         commentButton[idx].style.fontWeight = 'bold'
+//     } else {
+//         commentButton[idx].style = '';
+//     }
+// }3
+
+
+
+
+
 
     return (
         <section className="feedBox">
@@ -62,12 +80,14 @@ const FeedBox = () => {
                     <div className="commentMore">
                         댓글
                     </div>
-                    {exist.map((comment, idx)=>{
-                        return <Comment nickname={Object.keys(comment)} comment={Object.values(comment)} key={idx}/>})
+                    {exist.map((comment, idx) => {
+                        return <Comment nickname={Object.keys(comment)} comment={Object.values(comment)} key={idx} />
+                    })
                     }
 
-                    {comments.map((comment, idx)=>{
-                        return <Comment nickname={myName} comment={comment} key={idx}/>})
+                    {comments.map((comment, idx) => {
+                        return <Comment nickname={myName} comment={comment} key={idx} />
+                    })
                     }
 
                 </div>
@@ -75,14 +95,14 @@ const FeedBox = () => {
                     42분 전
                 </div>
                 <form className="commentInputBox">
-                    <input 
-                        onChange={(e) => { commentChange(e) }} 
-                        value={comment} 
+                    <input
+                        onChange={(e) => { commentChange(e) }}
+                        value={comment}
                         type="text"
-                        placeholder="댓글 달기..." 
-                        className="commentInput" 
+                        placeholder="댓글 달기..."
+                        className="commentInput"
                     />
-                    <button onClick={(e)=>{commentPlus(e)}} className="commentButton">게시</button>
+                    <button onClick={(e) => { commentPlus(e) }} className={btnStyle()}>게시</button>
                 </form>
             </div>
         </section>

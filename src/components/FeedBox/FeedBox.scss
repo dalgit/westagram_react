@@ -4,7 +4,6 @@
     width: 500px;
     background-color: #ffffff;
 
-
     &:nth-last-of-type(1) {
         margin-bottom: 30px;
     }
@@ -94,11 +93,7 @@
             color: #9E9E9E;
             padding: 0 10px;
         }
-
-
-
     }
-
     .commentTime {
         font-size: 8px;
         color: #9E9E9E;
@@ -127,6 +122,15 @@
             outline: 0;
             background-color: transparent;
             color: #C4E1FB;
+            cursor: pointer;
+        }
+
+        .commentButtonAct {
+            border: 0;
+            outline: 0;
+            background-color: transparent;
+            color: #0095F6;
+            font-weight: bold;
             cursor: pointer;
         }
 
