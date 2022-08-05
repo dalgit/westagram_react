@@ -12,13 +12,8 @@ const FeedBox = () => {
         setComment(e.target.value)
     }
 
-    function isEnter(e){
-        if(e.key==='Enter' && comment !=='') {
-            commentPlus()
-        }
-    }
-
-    function commentPlus(){
+    function commentPlus(e){
+        e.preventDefault()
         let tmp= [...comments]
         tmp.push(comment)
         setComments(tmp)
@@ -67,15 +62,16 @@ const FeedBox = () => {
                 <div className="commentTime">
                     42분 전
                 </div>
-                <div className="commentInputBox">
+                <form className="commentInputBox">
                     <input 
                         onChange={(e) => { commentChange(e) }} 
-                        onKeyDown={(e) => { isEnter(e) }} 
-                        value={comment} type="text" placeholder="댓글 달기..." 
+                        value={comment} 
+                        type="text"
+                        placeholder="댓글 달기..." 
                         className="commentInput" 
                     />
-                    <button onClick={(e)=>{commentPlus()}} className="commentButton">게시</button>
-                </div>
+                    <button onClick={(e)=>{commentPlus(e)}} className="commentButton">게시</button>
+                </form>
             </div>
         </section>
     )
