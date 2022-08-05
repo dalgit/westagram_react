@@ -31,21 +31,6 @@ const FeedBox = () => {
         setComment('')
     }
 
-
-// function commentButtonStyle(idx) {
-//     if (commentInput[idx].value.length > 0) {
-//         commentButton[idx].style.color = '#0095F6'
-//         commentButton[idx].style.fontWeight = 'bold'
-//     } else {
-//         commentButton[idx].style = '';
-//     }
-// }3
-
-
-
-
-
-
     return (
         <section className="feedBox">
             <div className="feedTop">
@@ -86,10 +71,9 @@ const FeedBox = () => {
                     }
 
                     {comments.map((comment, idx) => {
-                        return <Comment nickname={myName} comment={comment} key={idx} />
+                        return <Comment nickname={myName} comment={comment} new={true} key={idx} />
                     })
                     }
-
                 </div>
                 <div className="commentTime">
                     42분 전
