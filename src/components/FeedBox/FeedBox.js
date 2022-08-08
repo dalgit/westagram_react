@@ -14,8 +14,8 @@ const FeedBox = () => {
     const [comment, setComment] = useState('')
     const [comments, setComments] = useState([])
 
-    function btnStyle(){
-        return comment.length>0?'commentButtonAct':'commentButton'
+    function btnStyle() {
+        return comment.length > 0 ? 'commentButtonAct' : 'commentButton'
     }
 
     function commentChange(e) {
@@ -30,6 +30,8 @@ const FeedBox = () => {
         setComments(tmp)
         setComment('')
     }
+
+
 
     return (
         <section className="feedBox">
@@ -63,7 +65,7 @@ const FeedBox = () => {
 
                 <div className="commentContainer">
                     <div className="commentMore">
-                        {`댓글 ${exist.length+comments.length}개`}
+                        {`댓글 ${exist.length + comments.length}개`}
                     </div>
                     {exist.map((comment, idx) => {
                         return <Comment nickname={Object.keys(comment)} comment={Object.values(comment)} key={idx} />
@@ -71,7 +73,16 @@ const FeedBox = () => {
                     }
 
                     {comments.map((comment, idx) => {
-                        return <Comment nickname={myName} comment={comment} new={true} key={idx} />
+                        return (
+                            <Comment
+                                nickname={myName}
+                                comment={comment}
+                                new={true}
+                                key={idx}
+                                idx={idx}
+                                comments={comments}
+                                setComments={setComments} />
+                        )
                     })
                     }
                 </div>

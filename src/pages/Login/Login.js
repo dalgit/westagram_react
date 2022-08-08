@@ -11,6 +11,8 @@ function Login() {
         id:'',
         password:''
     })
+    
+    console.log(userId.password)
 
     function saveUserId(e){
         setuserId(
@@ -47,3 +49,4 @@ function Login() {
 }
 
 export default Login;
+
