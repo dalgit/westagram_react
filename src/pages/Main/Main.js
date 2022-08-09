@@ -5,7 +5,7 @@ import FeedBox from '../../components/FeedBox/FeedBox';
 import ProfileBox from '../../components/ProfileBox/ProfileBox';
 import StoryBox from '../../components/StoryBox/StoryBox';
 import RecommendBox from '../../components/RecommendBox/RecommendBox';
-
+import NoticeBox from '../../components/NoticeBox/NoticeBox';
 function Main() {
     return (
         <>
@@ -19,6 +19,7 @@ function Main() {
                     <ProfileBox/>
                     <StoryBox/>
                     <RecommendBox/>
+                    <NoticeBox/>
                 </aside>
             </div>
         </>
