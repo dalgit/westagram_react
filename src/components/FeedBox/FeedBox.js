@@ -3,7 +3,7 @@ import Comment from '../../components/Comment/Comment';
 import { useState } from 'react'
 import './FeedBox.scss'
 
-const FeedBox = (props) => {
+const FeedBox = ({data}) => {
 
     const myName = 'nyam_nyam2'
 
@@ -31,15 +31,15 @@ const FeedBox = (props) => {
         <section className="feedBox">
             <div className="feedTop">
                 <div className="feedTopLeft">
-                    <img src={props.data.user_img} alt="tmp" />
-                    {props.data.user_name}
+                    <img src={data.user_img} alt="tmp" />
+                    {data.user_name}
                 </div>
                 <div className="feedTopRight">
                     <img src="./images/more.png" alt="tmp" />
                 </div>
             </div>
             <article className="feedMiddleImg">
-                <img src={props.data.feed_img} alt="tmp" />
+                <img src={data.feed_img} alt="tmp" />
             </article>
             <div className="feedBottom">
                 <div className="bottomMenu">
@@ -53,16 +53,16 @@ const FeedBox = (props) => {
                     </div>
                 </div>
                 <div className="like">
-                    <img src={props.data.lover_img} alt="tmp" />
-                    <span className="userName">{props.data.lover_name}</span>님 외 {props.data.lover_num}명이 좋아합니다
+                    <img src={data.lover_img} alt="tmp" />
+                    <span className="userName">{data.lover_name}</span>님 외 {data.lover_num}명이 좋아합니다
                 </div>
 
                 <div className="commentContainer">
                     <div className="commentMore">
-                        {`댓글 ${props.data.comment.length + comments?.length}개`}
+                        {`댓글 ${data.comment.length + comments?.length}개`}
                     </div>
                     
-                    {props.data.comment.map((comment) => {
+                    {data.comment.map((comment) => {
                         return <Comment nickname={comment['user_name']} comment={comment['user_comment']} key={comment.id} />
                     })
                     }
@@ -72,7 +72,7 @@ const FeedBox = (props) => {
                             <Comment
                                 nickname={myName}
                                 comment={comment}
-                                new={true}
+                                close={true}
                                 key={idx}
                                 idx={idx}
                                 comments={comments}

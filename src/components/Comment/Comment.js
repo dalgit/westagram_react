@@ -1,8 +1,8 @@
 import React from 'react'
 import './Comment.scss'
 import { useState } from 'react'
-
-const Comment = (props) => {
+// 
+const Comment = ({comments, idx, setComments, nickname, myName, close, comment}) => {
     const [heartSrc, setHeartSrc] = useState([true, './images/heart.png'])
 
     function commentHeart() {
@@ -10,18 +10,18 @@ const Comment = (props) => {
     }
 
     function onRemove(){
-        let tmpComments= [...props.comments]
-        tmpComments.splice(props.idx,1)
-        props.setComments(tmpComments);
+        let tmpComments= [...comments]
+        tmpComments.splice(idx,1)
+        setComments(tmpComments);
       };
 
     return (
-        <div className="commentBox" key={props.idx}>
+        <div className="commentBox" key={idx}>
             <div className="comment">
-                <span className="userName">{props.nickname || props.myName}</span>{props.comment}
+                <span className="userName">{nickname || myName}</span>{comment}
             </div>
             <div className="commentImgBox">
-                {props.new
+                {close
                     ? <img onClick={()=>{onRemove()}} src={'./images/close.png'} className="commentClose" alt="tmp" />
                     : null}
                 <img onClick={() => commentHeart()} src={heartSrc[1]} className="commentHeart" alt="tmp" />
