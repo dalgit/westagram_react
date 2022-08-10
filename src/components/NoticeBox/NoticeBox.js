@@ -7,12 +7,12 @@ const NoticeBox = () => {
       <footer className="noticeBox">
         <div className="noticeInfo">
           {NOTICE_INFO_LIST.map(info => (
-            <sapn key={info.id}>
+            <span key={info.id}>
               {info.text}
               {info.id !== NOTICE_INFO_LIST.length
                 ? '·'
                 : null}
-            </sapn>
+            </span>
           ))}
         </div>
         <div>ⓒ 2019 INSTAGRAM</div>

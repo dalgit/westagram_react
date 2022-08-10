@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 function Login() {
+
     const navigate = useNavigate();
     let btnDisabled=true
 
@@ -11,8 +12,6 @@ function Login() {
         id:'',
         password:''
     })
-    
-    console.log(userId.password)
 
     function saveUserId(e){
         setuserId(
@@ -40,7 +39,7 @@ function Login() {
                         <input onChange={(e)=>{saveUserId(e)}} type="text" placeholder="전화번호, 사용자 이름 또는 이메일" id="id" />
                         <input onChange={(e)=>{saveUserId(e)}} type="password" placeholder="비밀번호" id="password" />
                     </div>
-                    <button className={validation()} onClick={()=>{navigate('/main')}} disabled={btnDisabled}>
+                    <button className={validation()} onClick={(e)=>{navigate('/main')}} disabled={btnDisabled}>
                         로그인
                     </button>
                 </form>

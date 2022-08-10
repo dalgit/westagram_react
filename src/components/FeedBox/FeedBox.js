@@ -3,13 +3,9 @@ import Comment from '../../components/Comment/Comment';
 import { useState } from 'react'
 import './FeedBox.scss'
 
-const FeedBox = () => {
+const FeedBox = (props) => {
 
     const myName = 'nyam_nyam2'
-    const exist = [
-        { AbC_0078: '와~ 너무 멋있어!!!!' },
-        { ioi_oio: '잘 보고 갑니다.' }
-    ]
 
     const [comment, setComment] = useState('')
     const [comments, setComments] = useState([])
@@ -31,21 +27,19 @@ const FeedBox = () => {
         setComment('')
     }
 
-
-
     return (
         <section className="feedBox">
             <div className="feedTop">
                 <div className="feedTopLeft">
-                    <img src="./images/user2.jpg" alt="tmp" />
-                    dogLove
+                    <img src={props.data.user_img} alt="tmp" />
+                    {props.data.user_name}
                 </div>
                 <div className="feedTopRight">
                     <img src="./images/more.png" alt="tmp" />
                 </div>
             </div>
             <article className="feedMiddleImg">
-                <img src="./images/feedimg1.jpg" alt="tmp" />
+                <img src={props.data.feed_img} alt="tmp" />
             </article>
             <div className="feedBottom">
                 <div className="bottomMenu">
@@ -59,16 +53,17 @@ const FeedBox = () => {
                     </div>
                 </div>
                 <div className="like">
-                    <img src="./images/loveimg2.jpg" alt="tmp" />
-                    <span className="userName">edBlure</span>님 외 2명이 좋아합니다
+                    <img src={props.data.lover_img} alt="tmp" />
+                    <span className="userName">{props.data.lover_name}</span>님 외 {props.data.lover_num}명이 좋아합니다
                 </div>
 
                 <div className="commentContainer">
                     <div className="commentMore">
-                        {`댓글 ${exist.length + comments.length}개`}
+                        {`댓글 ${props.data.comment.length + comments?.length}개`}
                     </div>
-                    {exist.map((comment, idx) => {
-                        return <Comment nickname={Object.keys(comment)} comment={Object.values(comment)} key={idx} />
+                    
+                    {props.data.comment.map((comment) => {
+                        return <Comment nickname={comment['user_name']} comment={comment['user_comment']} key={comment.id} />
                     })
                     }
 

@@ -6,14 +6,31 @@ import ProfileBox from '../../components/ProfileBox/ProfileBox';
 import StoryBox from '../../components/StoryBox/StoryBox';
 import RecommendBox from '../../components/RecommendBox/RecommendBox';
 import NoticeBox from '../../components/NoticeBox/NoticeBox';
+
+import { useState, useEffect } from 'react'
+
 function Main() {
+
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        fetch('/data/feedData.json', {
+          method: 'GET'
+        })
+          .then(res => res.json())
+          .then(data => {
+            setData(data);
+          });
+      },[]);
+    
+    if(data.length===0) return <></>;
+
     return (
         <>
             <Nav />
             <div className="mainContainer">
                 <div>
-                    <FeedBox/>
-                    <FeedBox/>
+                    {data.map((feedData)=><FeedBox data={feedData} key={feedData.id}/>)}
                 </div>
                 <aside className="asideFeed">
                     <ProfileBox/>
