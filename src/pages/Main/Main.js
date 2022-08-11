@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react'
 function Main() {
 
     const [data, setData] = useState([])
-
+    const [search, setSearch] = useState('')
     useEffect(() => {
         fetch('/data/feedData.json', {
           method: 'GET'
@@ -27,11 +27,23 @@ function Main() {
 
     return (
         <>
-            <Nav />
+            <Nav setSearch={setSearch} />
             <div className="mainContainer">
                 <div>
-                    {data.map((feedData)=><FeedBox data={feedData} key={feedData.id}/>)}
+                {data.map((feedData)=>{
+                        if(data.some((data)=>data['user_name']===search)){ 
+                            return (feedData.user_name===search)?<FeedBox data={feedData} key={feedData.id} search={search}/>:null
+                        }
+                        return <FeedBox data={feedData} key={feedData.id} search={search}/>
+                    })}
+
+
+                    {/* {data.map((feedData)=>{
+                        if(feedData.user_name===search) return <FeedBox data={feedData} key={feedData.id} search={search}/>
+                        return <FeedBox data={feedData} key={feedData.id} search={search}/>
+                    })} */}
                 </div>
+    
                 <aside className="asideFeed">
                     <ProfileBox/>
                     <StoryBox/>
