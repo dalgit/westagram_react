@@ -4,7 +4,7 @@ import { useState } from 'react'
 import './FeedBox.scss'
 
 const FeedBox = ({data}) => {
-
+    console.log(data)
     const myName = 'nyam_nyam2'
 
     const [comment, setComment] = useState('')
@@ -59,7 +59,8 @@ const FeedBox = ({data}) => {
 
                 <div className="commentContainer">
                     <div className="commentMore">
-                        {`댓글 ${data.comment.length + comments?.length}개`}
+                    {`댓글 ${data.comment?.length + comments?.length}개`}
+                        {/* {`댓글 ${data.comment.length + comments?.length}개`} */}
                     </div>
                     
                     {data.comment.map((comment) => {

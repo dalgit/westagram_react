@@ -13,6 +13,9 @@ function Main() {
 
     const [data, setData] = useState([])
     const [search, setSearch] = useState('')
+    
+    const filterFeeds=data.filter((data)=>(data['user_name'].toLowerCase().includes(search)))
+
     useEffect(() => {
         fetch('/data/feedData.json', {
           method: 'GET'
@@ -22,7 +25,9 @@ function Main() {
             setData(data);
           });
       },[]);
-    
+
+
+
     if(data.length===0) return <></>;
 
     return (
@@ -30,18 +35,9 @@ function Main() {
             <Nav setSearch={setSearch} />
             <div className="mainContainer">
                 <div>
-                {data.map((feedData)=>{
-                        if(data.some((data)=>data['user_name']===search)){ 
-                            return (feedData.user_name===search)?<FeedBox data={feedData} key={feedData.id} search={search}/>:null
-                        }
-                        return <FeedBox data={feedData} key={feedData.id} search={search}/>
+                    {filterFeeds.map((feed)=>{
+                        return <FeedBox data={feed} />
                     })}
-
-
-                    {/* {data.map((feedData)=>{
-                        if(feedData.user_name===search) return <FeedBox data={feedData} key={feedData.id} search={search}/>
-                        return <FeedBox data={feedData} key={feedData.id} search={search}/>
-                    })} */}
                 </div>
     
                 <aside className="asideFeed">
