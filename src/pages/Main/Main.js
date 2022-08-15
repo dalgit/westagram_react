@@ -11,7 +11,6 @@ import { useState, useEffect } from "react";
 
 function Main() {
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("/data/feedData.json", {
@@ -27,14 +26,17 @@ function Main() {
 
   return (
     <>
-      <Nav data={data} search={search} setSearch={setSearch} />
+      <Nav data={data}/>
       <div className="mainContainer">
         <div>
           {data.map((feed) => {
-            return feed["feed_img"] ? <FeedBox data={feed} /> : <></>;
+            return feed["feed_img"] ? (
+              <FeedBox feedData={feed} key={feed.id} data={data} />
+            ) : (
+              <></>
+            );
           })}
         </div>
-
         <aside className="asideFeed">
           <ProfileBox />
           <StoryBox />

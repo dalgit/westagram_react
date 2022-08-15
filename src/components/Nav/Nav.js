@@ -4,8 +4,9 @@ import NavDropDown from "./NavDropDown/NavDropDown";
 import NavDropSearch from "./NavDropSearch/NavDropSearch";
 import { useState } from "react";
 
-const Nav = ({ search, setSearch, data }) => {
-  const [searchs, setSearchs] = useState([])
+const Nav = ({ data }) => {
+  const [searchs, setSearchs] = useState([]);
+  const [search, setSearch] = useState("");
 
   function saveSearch(e) {
     setSearch(e.target.value);
@@ -14,7 +15,7 @@ const Nav = ({ search, setSearch, data }) => {
   return (
     <nav className="navbar">
       <div className="leftLogo">
-        <img src="images/instagram.png" alt="tmp" className="leftLogoImg" />|
+        <img src="./images/instagram.png" alt="tmp" className="leftLogoImg" />|
         westagram
       </div>
       <div>
@@ -30,7 +31,11 @@ const Nav = ({ search, setSearch, data }) => {
           {search === "" ? (
             <NavDropDown search={search} />
           ) : (
-            <NavDropSearch search={search} data={data} setSearchs={setSearchs} />
+            <NavDropSearch
+              search={search}
+              data={data}
+              setSearchs={setSearchs}
+            />
           )}
         </div>
       </div>

@@ -12,21 +12,19 @@ const NavDropSearch = ({ search, data, setSearchs }) => {
   }
   return (
     <>
-      <a hreft="">
-        <div className="searchDropBox" onclick={seee}>
-          {inputFiltering().map((c) => {
-            return (
-              <div className="searchUserProfile">
-                <img src={c["user_img"]} alt="" className="userImg" />
-                <div>
-                  <div className="userName1">{c["user_name"]}</div>
-                  <div className="userName2">{c["user_second_name"]}</div>
-                </div>
+      <div className="searchDropBox">
+        {inputFiltering().map((c) => {
+          return (
+            <div className="searchUserProfile" onclick={seee}>
+              <img src={c["user_img"]} alt="" className="userImg" />
+              <div>
+                <div className="userName1">{c["user_name"]}</div>
+                <div className="userName2">{c["user_second_name"]}</div>
               </div>
-            );
-          })}
-        </div>
-      </a>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };

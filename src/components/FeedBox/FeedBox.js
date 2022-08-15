@@ -2,9 +2,9 @@ import React from "react";
 import Comment from "../../components/Comment/Comment";
 import { useState } from "react";
 import "./FeedBox.scss";
-
-const FeedBox = ({ data }) => {
-  console.log(data);
+import { useNavigate } from "react-router-dom";
+const FeedBox = ({ feedData, data }) => {
+  const navigate = useNavigate();
   const myName = "nyam_nyam2";
 
   const [comment, setComment] = useState("");
@@ -27,19 +27,23 @@ const FeedBox = ({ data }) => {
     setComment("");
   }
 
+  const handleClick = () => {
+    navigate("/main/personal", { state: data });
+  };
+
   return (
     <section className="feedBox">
       <div className="feedTop">
-        <div className="feedTopLeft">
-          <img src={data.user_img} alt="tmp" />
-          {data.user_name}
+        <div className="feedTopLeft" onClick={handleClick}>
+          <img src={feedData.user_img} alt="tmp" />
+          {feedData.user_name}
         </div>
         <div className="feedTopRight">
           <img src="./images/more.png" alt="tmp" />
         </div>
       </div>
       <article className="feedMiddleImg">
-        <img src={data.feed_img} alt="tmp" />
+        <img src={feedData.feed_img} alt="tmp" />
       </article>
       <div className="feedBottom">
         <div className="bottomMenu">
@@ -53,18 +57,17 @@ const FeedBox = ({ data }) => {
           </div>
         </div>
         <div className="like">
-          <img src={data.lover_img} alt="tmp" />
-          <span className="userName">{data.lover_name}</span>님 외{" "}
-          {data.lover_num}명이 좋아합니다
+          <img src={feedData.lover_img} alt="tmp" />
+          <span className="userName">{feedData.lover_name}</span>님 외{" "}
+          {feedData.lover_num}명이 좋아합니다
         </div>
 
         <div className="commentContainer">
           <div className="commentMore">
-            {`댓글 ${data.comment?.length + comments?.length}개`}
-            {/* {`댓글 ${data.comment.length + comments?.length}개`} */}
+            {`댓글 ${feedData.comment?.length + comments?.length}개`}
           </div>
 
-          {data.comment.map((comment) => {
+          {feedData.comment.map((comment) => {
             return (
               <Comment
                 nickname={comment["user_name"]}
@@ -73,11 +76,6 @@ const FeedBox = ({ data }) => {
               />
             );
           })}
-
-          {/* {data.comment.map((comment) => {
-                        return <Comment nickname={comment['user_name']} comment={comment['user_comment']} key={comment.id} />
-                    })
-                    } */}
 
           {comments.map((comment, idx) => {
             return (

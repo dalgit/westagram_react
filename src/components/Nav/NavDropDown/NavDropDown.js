@@ -4,7 +4,7 @@ import "./NavDropDown.scss";
 const NavDropDown = ({ search }) => {
   return (
     <div className="recentDropBox">
-      <div class="recentTop">
+      <div className="recentTop">
         <div className="topText1">최근 검색 항목</div>
         <div className="topText2">모두 지우기</div>
       </div>
