@@ -3,7 +3,7 @@ import "./Nav.scss";
 import NavDropDown from "./NavDropDown/NavDropDown";
 import NavDropSearch from "./NavDropSearch/NavDropSearch";
 
-const Nav = ({ search, setSearch }) => {
+const Nav = ({ search, setSearch ,data}) => {
   function saveSearch(e) {
     setSearch(e.target.value);
   }
@@ -27,7 +27,7 @@ const Nav = ({ search, setSearch }) => {
           {search === "" ? (
             <NavDropDown search={search} />
           ) : (
-            <NavDropSearch search={search} />
+            <NavDropSearch search={search} data={data} />
           )}
         </div>
       </div>

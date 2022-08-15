@@ -1,41 +1,25 @@
 import React from "react";
 import "./NavDropSearch.scss";
 
-const NavDropSearch = () => {
+const NavDropSearch = ({ search, data }) => {
+  function inputFiltering() {
+    return data?.filter((c) => c["user_name"].toLowerCase().includes(search));
+  }
+
   return (
     <>
       <div className="searchDropBox">
-        <div className="searchUserProfile">
-          <img src="./images/user1.jpg" alt="" className="userImg" />
-          <div>
-            <div className="userName1">nickName</div>
-            <div className="userName2">안녕하세요</div>
-          </div>
-        </div>
-
-        <div className="searchUserProfile">
-          <img src="./images/user1.jpg" alt="" className="userImg" />
-          <div>
-            <div className="userName1">nickName</div>
-            <div className="userName2">안녕하세요</div>
-          </div>
-        </div>
-
-        <div className="searchUserProfile">
-          <img src="./images/user1.jpg" alt="" className="userImg" />
-          <div>
-            <div className="userName1">nickName</div>
-            <div className="userName2">안녕하세요</div>
-          </div>
-        </div>
-
-        <div className="searchUserProfile">
-          <img src="./images/user1.jpg" alt="" className="userImg" />
-          <div>
-            <div className="userName1">nickName</div>
-            <div className="userName2">안녕하세요</div>
-          </div>
-        </div>
+        {inputFiltering().map((c) => {
+          return (
+            <div className="searchUserProfile">
+              <img src={c["user_img"]} alt="" className="userImg" />
+              <div>
+                <div className="userName1">{c["user_name"]}</div>
+                <div className="userName2">{c["user_second_name"]}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );

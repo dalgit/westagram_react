@@ -2,6 +2,7 @@
   {
     "id": 1,
     "user_name": "dogLove",
+    "user_second_name": "김웅진",
     "user_img": "./images/user1.jpg",
     "feed_img": "./images/feedimg1.jpg",
     "lover_name": "king_do",

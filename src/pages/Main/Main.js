@@ -13,12 +13,6 @@ function Main() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
 
-  const filterFeeds = data.filter(
-    (data) =>
-      // data["user_name"].toLowerCase().includes(search)
-      true
-  );
-
   useEffect(() => {
     fetch("/data/feedData.json", {
       method: "GET",
@@ -33,10 +27,10 @@ function Main() {
 
   return (
     <>
-      <Nav search={search} setSearch={setSearch} />
+      <Nav data={data} search={search} setSearch={setSearch} />
       <div className="mainContainer">
         <div>
-          {filterFeeds.map((feed) => {
+          {data.map((feed) => {
             return <FeedBox data={feed} />;
           })}
         </div>
