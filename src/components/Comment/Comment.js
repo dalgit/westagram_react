@@ -1,7 +1,7 @@
 import React from 'react'
 import './Comment.scss'
 import { useState } from 'react'
-// 
+
 const Comment = ({comments, idx, setComments, nickname, myName, close, comment}) => {
     const [heartSrc, setHeartSrc] = useState([true, './images/heart.png'])
 
