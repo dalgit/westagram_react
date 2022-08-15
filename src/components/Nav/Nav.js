@@ -2,8 +2,11 @@ import React from "react";
 import "./Nav.scss";
 import NavDropDown from "./NavDropDown/NavDropDown";
 import NavDropSearch from "./NavDropSearch/NavDropSearch";
+import { useState } from "react";
 
-const Nav = ({ search, setSearch ,data}) => {
+const Nav = ({ search, setSearch, data }) => {
+  const [searchs, setSearchs] = useState([])
+
   function saveSearch(e) {
     setSearch(e.target.value);
   }
@@ -27,7 +30,7 @@ const Nav = ({ search, setSearch ,data}) => {
           {search === "" ? (
             <NavDropDown search={search} />
           ) : (
-            <NavDropSearch search={search} data={data} />
+            <NavDropSearch search={search} data={data} setSearchs={setSearchs} />
           )}
         </div>
       </div>

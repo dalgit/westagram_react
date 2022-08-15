@@ -31,7 +31,7 @@ function Main() {
       <div className="mainContainer">
         <div>
           {data.map((feed) => {
-            return <FeedBox data={feed} />;
+            return feed["feed_img"] ? <FeedBox data={feed} /> : <></>;
           })}
         </div>
 
